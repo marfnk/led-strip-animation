@@ -1,6 +1,6 @@
 {
   "name": "led-strip-animation",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "This framework helps to create beautiful RGB LED strip animations for strips with single accessable LEDs like APA102 or WS281x with Typescript.\nYou can develop the animation without any hardware and preview it in the browser or on your terminal console.",
   "main": "dist/index.js",
   "homepage": "https://github.com/marfnk/led-strip-animation",
@@ -11,7 +11,8 @@
   "dependencies": {
     "lodash": "^4.17.11",
     "tinycolor2": "^1.4.1",
-    "tinygradient": "^1.0.0"
+    "tinygradient": "^1.0.0",
+    "rpi-ws281x-native": "^0.9.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.121",

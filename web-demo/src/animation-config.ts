@@ -1,6 +1,7 @@
 import { GradientRotationAnimation, LedAnimation, RainbowAnimation, ReveilAnimation, SparkleAnimation } from 'led-strip-animation';
 import { NamedAnimation } from './named-animation';
 import { MyExampleAnimation } from './custom-animations/my-example-animation';
+import { TrafficLightAnimation } from './custom-animations/traffic-light';
 
 /**
  * Number of LEDs to animate (length of strip)
@@ -32,5 +33,9 @@ export const ANIMATIONS: NamedAnimation[] = [
   {
     name: 'My Example Animation',
     animation: new MyExampleAnimation(NUMBER_OF_LEDS)
+  },
+  {
+    name: 'Traffic Light',
+    animation: new TrafficLightAnimation(NUMBER_OF_LEDS)
   }
 ];
