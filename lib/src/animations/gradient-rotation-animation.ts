@@ -1,15 +1,15 @@
 import { LedAnimation } from './led-animation';
-import { GradientHelper } from '../gradient-helper';
+import { GradientHelper } from '..';
 import * as tinycolor from 'tinycolor2';
 
 export class GradientRotationAnimation extends LedAnimation {
   private gradient: tinycolor.Instance[];
   private n: number;
 
-  constructor(n: number, colorA: tinycolor.ColorInput, colorB: tinycolor.ColorInput) {
+  constructor(n: number, colors: tinycolor.ColorInput[]) {
     super();
     this.n = n;
-    this.gradient = GradientHelper.generateRoundGradient(n, colorA, colorB);
+    this.gradient = GradientHelper.generateRoundGradient(n, colors);
   }
 
   public getStateForProgress(progress: number): tinycolor.Instance[] {

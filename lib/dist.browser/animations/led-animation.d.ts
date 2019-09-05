@@ -1,6 +1,6 @@
 import { EasingFunction } from '../models/easing-function';
 import * as tinycolor from 'tinycolor2';
-export declare type LedAnimationCallbackFunction = (a: tinycolor.Instance[]) => void;
+import { LedConnector } from '..';
 export declare abstract class LedAnimation {
     /**
      * the update speed of the anmiation.
@@ -20,10 +20,10 @@ export declare abstract class LedAnimation {
      * Plays an animation.
      * Should be called with await keyword to make animations them sequential.
      * @param duration the duration of the animation in milliseconds
-     * @param callback a callback that is called on every color change
+     * @param ledConnector a led connector that updates the strip
      * @param easingFunction (optional) an easing function, linear by default
      */
-    play(duration: number, callback: LedAnimationCallbackFunction, easingFunction?: EasingFunction): Promise<void>;
+    play(duration: number, ledConnector: LedConnector, easingFunction?: EasingFunction): Promise<void>;
     /**
      * stop this animation if running
      */

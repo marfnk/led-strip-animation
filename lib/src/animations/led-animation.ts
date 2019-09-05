@@ -1,7 +1,6 @@
 import { EasingFunction } from '../models/easing-function';
 import * as tinycolor from 'tinycolor2';
-
-export type LedAnimationCallbackFunction = (a: tinycolor.Instance[]) => void;
+import { LedConnector } from '..';
 
 export abstract class LedAnimation {
 
@@ -25,10 +24,10 @@ export abstract class LedAnimation {
    * Plays an animation.
    * Should be called with await keyword to make animations them sequential.
    * @param duration the duration of the animation in milliseconds
-   * @param callback a callback that is called on every color change
+   * @param ledConnector a led connector that updates the strip
    * @param easingFunction (optional) an easing function, linear by default
    */
-  public async play(duration: number, callback: LedAnimationCallbackFunction, easingFunction: EasingFunction = (t: number) => t): Promise<void> {
+  public async play(duration: number, ledConnector: LedConnector, easingFunction: EasingFunction = (t: number) => t): Promise<void> {
     const frequency: number = duration / Math.round(duration / LedAnimation.PREFERRED_FREQUENCY);
 
     return new Promise<void>((finish: () => void) => {
@@ -44,7 +43,7 @@ export abstract class LedAnimation {
           finish();
         }
 
-        setTimeout(() => callback(this.getStateForProgress(easingFunction(progress))), 0);
+        setTimeout(() => ledConnector.setColors(this.getStateForProgress(easingFunction(progress))), 0);
 
         elapsed += frequency;
       }, frequency);

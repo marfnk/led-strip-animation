@@ -1,8 +1,8 @@
 import { LedAnimation } from './led-animation';
-import { GradientHelper } from '../gradient-helper';
 import * as _ from 'lodash';
 // @ts-ignore
 import tinycolor, { ColorInput } from 'tinycolor2';
+import { GradientHelper } from '..';
 
 /**
  * starts with complete color
@@ -30,7 +30,7 @@ export class ReveilAnimation extends LedAnimation {
     this.background = background;
     this.length = length;
 
-    this.transition = GradientHelper.generateGradient(length, background, foreground);
+    this.transition = GradientHelper.generateGradient(length, [background, foreground]);
   }
 
   public getStateForProgress(progress: number): tinycolor.Instance[] {

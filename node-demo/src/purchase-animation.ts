@@ -1,6 +1,6 @@
 import { Colors } from './colors';
-const tinycolor = require('tinycolor2');
 import { GradientHelper, LedAnimation } from 'led-strip-animation';
+const tinycolor = require('tinycolor2');
 
 export class PurchaseAnimation extends LedAnimation {
   private gradient: tinycolor.Instance[];
@@ -21,7 +21,7 @@ export class PurchaseAnimation extends LedAnimation {
     this.n = n;
     this.targetAreaLeft = targetAreaLeft;
     this.targetAreaRight = targetAreaRight;
-    this.gradient = GradientHelper.generateRoundGradient(n, Colors.SUCCESS_1, Colors.SUCCESS_2);
+    this.gradient = GradientHelper.generateRoundGradient(n, [Colors.SUCCESS_1, Colors.SUCCESS_2]);
     this.middleTop = Math.round((n + targetAreaRight[0] - targetAreaLeft[1]) / 2 + targetAreaLeft[1]);
     this.middleBottom = Math.round((targetAreaRight[1] + targetAreaLeft[0]) / 2);
   }

@@ -1,20 +1,21 @@
 import * as _ from 'lodash';
 import chalk from 'chalk';
-import RGB = tinycolor.ColorFormats.RGB;
 import { clearLine, cursorTo } from 'readline';
-import { ColorInput } from 'tinycolor2';
+import { LedConnector } from 'led-strip-animation';
 import tinycolor = require('tinycolor2');
+import RGB = tinycolor.ColorFormats.RGB;
 
-export class ConsoleLed {
+export class ConsoleLed extends LedConnector {
   leds: tinycolor.Instance[];
   private columns: number;
 
   constructor(n: number) {
+    super(n);
     this.leds = _.range(n).map((index: number) => tinycolor('black'));
     this.columns = process.stdout.columns || 10;
   }
 
-  setColors(colors: tinycolor.Instance[]): void {
+  sendColorsToStrip(colors: tinycolor.Instance[]): void {
     this.leds = colors;
     this.print();
   }
