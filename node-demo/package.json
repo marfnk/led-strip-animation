@@ -6,7 +6,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "eases": "^1.0.8",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "led-strip-animation": "../lib",
     "lodash": "^4.17.15",
     "rpi-ws281x-native": "^0.9.0",
